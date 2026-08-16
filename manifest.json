@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "WB Price Extension",
+  "description": "Owner-operated price change assistant (placeholder shell).",
+  "version": "0.1.0",
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "WB Price Extension"
+  }
+}

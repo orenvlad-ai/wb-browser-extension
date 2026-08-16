@@ -1,12 +1,12 @@
 # WB Price Extension
 
-Bootstrap repository for a future Chrome extension that will help an owner
-prepare and apply price changes to their own Wildberries products.
+Repository for a Chrome extension that will help an owner prepare and apply
+price changes to their own Wildberries products.
 
-This initial `main` contains repository policy, high-level boundaries, and a
-model-free baseline only. It does not contain extension product code, a
-Wildberries API client, credentials, deployment automation, or live platform
-integration.
+The current implementation is an inert Manifest V3 shell with an accessible
+local popup placeholder. It does not request permissions or contain price
+change behavior, a Wildberries API client, credentials, storage, background
+networking, telemetry, deployment automation, or live platform integration.
 
 After this bootstrap, all feature changes must enter through the exact DCP
 `wb-price-extension` / `repo-only` target, pass the `baseline` check and fresh
