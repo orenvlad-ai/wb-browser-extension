@@ -1,0 +1,21 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 20rem;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 1.125rem;
+  margin: 0 0 0.75rem;
+}
+
+p {
+  line-height: 1.5;
+  margin: 0;
+}

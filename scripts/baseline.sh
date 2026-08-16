@@ -7,6 +7,10 @@ cd "$repo_root"
 required_files=(
   README.md
   AGENTS.md
+  manifest.json
+  popup/popup.html
+  popup/popup.css
+  tests/test_mv3_shell.py
   docs/PROJECT_BRIEF.md
   docs/ARCHITECTURE.md
   .gitignore
@@ -18,6 +22,7 @@ for path in "${required_files[@]}"; do
 done
 
 bash -n scripts/baseline.sh
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p 'test_*.py'
 git diff --check HEAD --
 
 if git grep -nE '[[:blank:]]+$' -- .; then
