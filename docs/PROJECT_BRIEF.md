@@ -15,9 +15,10 @@ applying price changes to the operator's own Wildberries catalogue.
 
 ## Current state
 
-This repository is bootstrap-only. It contains no manifest, browser UI,
-background worker, API adapter, credential storage, product logic, deployment,
-or live platform call.
+This repository contains an inert Manifest V3 shell with an accessible local
+popup placeholder. It contains no background worker, API adapter, credential
+storage, product logic, deployment, live platform call, or price-mutation
+behavior.
 
 ## Boundaries
 

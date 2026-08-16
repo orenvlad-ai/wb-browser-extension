@@ -27,8 +27,9 @@ backend service, deployment, or unattended retries. It does not scrape the
 page as proof of ownership, bypass Wildberries controls, or promise that a
 price change is accepted or immediately visible.
 
-This document defines future implementation boundaries. The repository does
-not currently contain an extension or a live integration.
+This document defines future implementation boundaries. The repository
+currently contains only an inert Manifest V3 shell with an accessible local
+popup placeholder; it has no live integration or price-mutation behavior.
 
 ## Components and trust boundaries
 
