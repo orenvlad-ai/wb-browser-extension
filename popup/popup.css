@@ -12,7 +12,20 @@ body {
 
 h1 {
   font-size: 1.125rem;
+  margin: 0 0 0.5rem;
+}
+
+.prototype-badge {
+  background: light-dark(#eef2ff, #27304a);
+  border: 1px solid light-dark(#c7d2fe, #475577);
+  border-radius: 999px;
+  color: light-dark(#3730a3, #dbe4ff);
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.25;
   margin: 0 0 0.75rem;
+  padding: 0.2rem 0.5rem;
 }
 
 p {
