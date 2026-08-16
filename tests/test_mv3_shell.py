@@ -19,6 +19,8 @@ class PopupParser(HTMLParser):
         self.stylesheets = []
         self.scripts = []
         self.inline_handlers = []
+        self.open_tags = []
+        self.badges = []
 
     def handle_starttag(self, tag, attrs):
         attributes = dict(attrs)
@@ -33,6 +35,26 @@ class PopupParser(HTMLParser):
         if tag == "script":
             self.scripts.append(attributes.get("src"))
         self.inline_handlers.extend(name for name, _ in attrs if name.startswith("on"))
+        if "prototype-badge" in attributes.get("class", "").split():
+            self.badges.append(
+                {
+                    "tag": tag,
+                    "attributes": attributes,
+                    "inside_interactive": any(
+                        open_tag in {"a", "button", "input", "select", "textarea"}
+                        for open_tag in self.open_tags
+                    ),
+                    "text": "",
+                }
+            )
+        self.open_tags.append(tag)
+
+    def handle_endtag(self, tag):
+        self.open_tags.pop()
+
+    def handle_data(self, data):
+        if self.badges and self.open_tags[-1:] == [self.badges[-1]["tag"]]:
+            self.badges[-1]["text"] += data
 
 
 class MV3ShellTest(unittest.TestCase):
@@ -68,6 +90,19 @@ class MV3ShellTest(unittest.TestCase):
         for asset in parser.stylesheets:
             self.assertNotIn("://", asset)
             self.assertTrue((popup_path.parent / asset).is_file())
+
+    def test_popup_has_noninteractive_prototype_badge(self):
+        popup_path = ROOT / self.manifest["action"]["default_popup"]
+        parser = PopupParser()
+        parser.feed(popup_path.read_text(encoding="utf-8"))
+
+        self.assertEqual(len(parser.badges), 1)
+        badge = parser.badges[0]
+        self.assertEqual(badge["tag"], "span")
+        self.assertEqual(badge["text"], "Локальный прототип")
+        self.assertFalse(badge["inside_interactive"])
+        for forbidden_attribute in ("href", "role", "tabindex", "contenteditable"):
+            self.assertNotIn(forbidden_attribute, badge["attributes"])
 
 
 if __name__ == "__main__":
