@@ -9,7 +9,7 @@ change behavior, a Wildberries API client, credentials, storage, background
 networking, telemetry, deployment automation, or live platform integration.
 
 After this bootstrap, all feature changes must enter through the exact DCP
-`wb-price-extension` / `repo-only` target, pass the `baseline` check and fresh
+`wb-browser-extension` / `repo-only` target, pass the `baseline` check and fresh
 review, and merge through the trusted DCP admission controller.
 
 See [Project brief](docs/PROJECT_BRIEF.md),

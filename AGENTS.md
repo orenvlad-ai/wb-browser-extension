@@ -4,7 +4,7 @@ This public repository is the isolated, repo-only home for a future Chrome
 extension that changes prices only for products owned by its operator.
 
 - The bootstrap commit is the sole permitted direct `main` commit. Every later
-  change starts through DCP target `wb-price-extension`, profile `repo-only`.
+  change starts through DCP target `wb-browser-extension`, profile `repo-only`.
 - DCP is the only merge controller. A worker creates one scoped branch and one
   ready PR; the trusted DCP reviewer, FIFO admission lease, and terminal merger
   own review and merge. Do not merge manually or push feature changes to
