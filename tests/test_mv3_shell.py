@@ -100,6 +100,7 @@ class MV3ShellTest(unittest.TestCase):
         badge = parser.badges[0]
         self.assertEqual(badge["tag"], "span")
         self.assertEqual(badge["text"], "Локальный прототип")
+        self.assertEqual(badge["attributes"].get("lang"), "ru")
         self.assertFalse(badge["inside_interactive"])
         for forbidden_attribute in ("href", "role", "tabindex", "contenteditable"):
             self.assertNotIn(forbidden_attribute, badge["attributes"])
